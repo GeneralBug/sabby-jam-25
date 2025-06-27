@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://djhmm2ddoh7cl"]
+
+[ext_resource type="Texture2D" uid="uid://bbqy14vg1fwq5" path="res://Textures/Fish/salmon.png" id="1_pmktt"]
+[ext_resource type="Script" uid="uid://jg5viyx3igji" path="res://Scripts/fish.gd" id="2_hw22h"]
+
+[node name="Salmon" type="Sprite3D"]
+texture = ExtResource("1_pmktt")
+script = ExtResource("2_hw22h")
+pretty_name = "Salmon"
+rarity = 1
+slow_chance = 50
+med_chance = 50
+fast_chance = 50

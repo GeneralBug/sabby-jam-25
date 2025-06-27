@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://ymroewrsa86p"]
+
+[ext_resource type="PackedScene" uid="uid://djhmm2ddoh7cl" path="res://Scenes/Fish/salmon.tscn" id="1_bo1nx"]
+[ext_resource type="Script" uid="uid://cf7sq0ivlxfrj" path="res://Scripts/fishing.gd" id="1_jjgbg"]
+[ext_resource type="Texture2D" uid="uid://bf5shuajy32ql" path="res://Textures/bobber.png" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://c4te7xe8krymx" path="res://Scenes/ui controller.gd" id="4_jjvhh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo1nx"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_8gbba"]
+sky_material = SubResource("ProceduralSkyMaterial_bo1nx")
+
+[sub_resource type="Environment" id="Environment_jjvhh"]
+background_mode = 2
+sky = SubResource("Sky_8gbba")
+tonemap_mode = 2
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jjvhh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Fish Storage" type="Node3D" parent="."]
+
+[node name="Salmon" parent="Fish Storage" instance=ExtResource("1_bo1nx")]
+visible = false
+slow_chance = 400
+med_chance = 250
+fast_chance = 600
+
+[node name="Fisher" type="Node3D" parent="." node_paths=PackedStringArray("fish_list")]
+script = ExtResource("1_jjgbg")
+progress_fast = 5
+target = 1000
+grace_period = 2
+fish_list = [NodePath("../Fish Storage/Salmon")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fisher"]
+root_node = NodePath("../Sprite3D")
+
+[node name="Camera3D" type="Camera3D" parent="Fisher"]
+
+[node name="Sprite3D" type="Sprite3D" parent="Fisher"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.0568018, -0.216959, -1.53512)
+billboard = 1
+texture = ExtResource("3_8gbba")
+
+[node name="Control" type="Control" parent="Fisher"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_jjvhh")
