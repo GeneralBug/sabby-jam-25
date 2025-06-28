@@ -1,30 +1,491 @@
-[gd_scene load_steps=8 format=3 uid="uid://ymroewrsa86p"]
+[gd_scene load_steps=34 format=4 uid="uid://ymroewrsa86p"]
 
+[ext_resource type="Material" uid="uid://dpyoo4cd0q57h" path="res://Shaders/water-material-1.tres" id="1_21xkr"]
 [ext_resource type="PackedScene" uid="uid://djhmm2ddoh7cl" path="res://Scenes/Fish/salmon.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://cf7sq0ivlxfrj" path="res://Scripts/fishing.gd" id="1_jjgbg"]
+[ext_resource type="Texture2D" uid="uid://dm0wwfdeop4j5" path="res://Textures/rod.png" id="2_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://bf5shuajy32ql" path="res://Textures/bobber.png" id="3_8gbba"]
+[ext_resource type="Texture2D" uid="uid://buw6mw10b6yvt" path="res://Textures/sun.png" id="3_ynf5e"]
+[ext_resource type="Texture2D" uid="uid://b3qx2hkug1xwq" path="res://Textures/grass.png" id="4_hptm8"]
 [ext_resource type="Script" uid="uid://c4te7xe8krymx" path="res://Scenes/ui controller.gd" id="4_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://ifc6hb67u8bq" path="res://Textures/tree 2.png" id="6_d1ilt"]
+[ext_resource type="Texture2D" uid="uid://c7ltwg2071171" path="res://Textures/tree 1.png" id="7_6iyac"]
+[ext_resource type="Texture2D" uid="uid://cu4u87owmmtt6" path="res://Textures/tree 3.png" id="8_fdnlq"]
+[ext_resource type="Texture2D" uid="uid://cmbol5aiwlbma" path="res://Textures/splash.png" id="12_6iyac"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo1nx"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hptm8"]
 
 [sub_resource type="Sky" id="Sky_8gbba"]
-sky_material = SubResource("ProceduralSkyMaterial_bo1nx")
+sky_material = SubResource("PanoramaSkyMaterial_hptm8")
 
 [sub_resource type="Environment" id="Environment_jjvhh"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.117647, 0.521569, 0.729412, 1)
 sky = SubResource("Sky_8gbba")
 tonemap_mode = 2
 
+[sub_resource type="Animation" id="Animation_d1ilt"]
+resource_name = "casting"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../CanvasLayer/rod:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.51, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.523599, 0.523599, 0.261799, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.16667, 1.5, 1.6, 1.7, 1.8, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(80, 80, -10), Vector3(23.1326, 67.3699, 14.8748), Vector3(0, -2, 0), Vector3(0, 1, 0), Vector3(0, -1, 0), Vector3(0, 1, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles3D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_6iyac"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../CanvasLayer/rod:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.80007, -4.2844, 8.12302)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles3D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CPUParticles3D:initial_velocity_min")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [25.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CPUParticles3D:initial_velocity_max")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [50.0]
+}
+
+[sub_resource type="Animation" id="Animation_fdnlq"]
+resource_name = "slow_bobber"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2, 0, 2), Vector3(0, 0, 0), Vector3(-2, 0, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles3D:initial_velocity_min")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [20.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CPUParticles3D:initial_velocity_max")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [25.0]
+}
+
+[sub_resource type="Animation" id="Animation_jkdf5"]
+resource_name = "fast_bobber"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(4, 0, 4), Vector3(0, 0, 0), Vector3(-4, 0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles3D:initial_velocity_min")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [40.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CPUParticles3D:initial_velocity_max")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [60.0]
+}
+
+[sub_resource type="Animation" id="Animation_wsu2k"]
+resource_name = "med_bobber"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2, 0, 2), Vector3(0, 0, 0), Vector3(-2, 0, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles3D:initial_velocity_min")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [25.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CPUParticles3D:initial_velocity_max")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [50.0]
+}
+
+[sub_resource type="Animation" id="Animation_k12tt"]
+resource_name = "pull"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../CanvasLayer/rod:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.523599, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 100, 0), Vector3(80, 80, -10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles3D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fdnlq"]
+_data = {
+&"RESET": SubResource("Animation_6iyac"),
+&"casting": SubResource("Animation_d1ilt"),
+&"fast_bobber": SubResource("Animation_jkdf5"),
+&"med_bobber": SubResource("Animation_wsu2k"),
+&"pull": SubResource("Animation_k12tt"),
+&"slow_bobber": SubResource("Animation_fdnlq")
+}
+
+[sub_resource type="Animation" id="Animation_h1bgf"]
+resource_name = "rod_bob"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/rod:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0872665]
+}
+
+[sub_resource type="Animation" id="Animation_b3802"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/rod:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fevyy"]
+_data = {
+&"RESET": SubResource("Animation_b3802"),
+&"rod_bob": SubResource("Animation_h1bgf")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrfqh"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0, 0.784314, 0, 1)
+albedo_texture = ExtResource("4_hptm8")
+uv1_scale = Vector3(0.565, 0.1, 0.1)
+uv1_triplanar = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_om6l7"]
+_surfaces = [{
+"aabb": AABB(-11, -1, -6, 22, 2, 12),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAAFAAAA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAAAA//8AAAAA////////AAAAAAAAAAAAAP//AAAAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_r3q5h"]
+resource_name = "ground_Cube"
+_surfaces = [{
+"aabb": AABB(-11, -1, -6, 22, 2, 12),
+"attribute_data": PackedByteArray("/5//f//f/z//3/9//5//P/9f/7//n/9//5//v/9f/38="),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": SubResource("StandardMaterial3D_vrfqh"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAA//8AAP///////wAA//8AAP////////////8AAAAAAAD///////8AAP//AAD//wAA/////wAAAAD///9//7//f/+//3//v/9//7//v/+//7//v/+//7//v/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_om6l7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkdf5"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0, 0.784314, 0, 1)
+albedo_texture = ExtResource("4_hptm8")
+uv1_scale = Vector3(0.02, 0.01, 0.01)
+uv1_triplanar = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wsu2k"]
+resource_name = "ground_Cube"
+_surfaces = [{
+"aabb": AABB(-11, -1, -6, 22, 2, 12),
+"attribute_data": PackedByteArray("/5//f//f/z//3/9//5//P/9f/7//n/9//5//v/9f/38="),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": SubResource("StandardMaterial3D_jkdf5"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAA//8AAP///////wAA//8AAP////////////8AAAAAAAD///////8AAP//AAD//wAA/////wAAAAD///9//7//f/+//3//v/9//7//v/+//7//v/+//7//v/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_om6l7")
+
+[sub_resource type="QuadMesh" id="QuadMesh_6iyac"]
+material = ExtResource("1_21xkr")
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wsu2k"]
+transparency = 1
+albedo_texture = ExtResource("12_6iyac")
+
+[sub_resource type="QuadMesh" id="QuadMesh_k12tt"]
+material = SubResource("StandardMaterial3D_wsu2k")
+size = Vector2(0.75, 0.75)
+
 [node name="Node3D" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_jjvhh")
+
+[node name="rod" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+offset_left = -143.0
+offset_top = -40.0
+offset_right = 369.0
+offset_bottom = 472.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(143, 400)
+texture = ExtResource("2_d1ilt")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jjvhh")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(0.999048, 0.0107739, -0.0422679, 0, 0.969016, 0.246999, 0.0436194, -0.246764, 0.968094, 0, 0, 0)
 shadow_enabled = true
+sky_mode = 1
+
+[node name="sun _)" type="Sprite3D" parent="DirectionalLight3D"]
+transform = Transform3D(0.8, 3.55271e-16, 2.38419e-08, 0, 0.8, -1.19209e-08, -2.38419e-08, 1.19209e-08, 0.8, -0.5, 0.8, 20.065)
+billboard = 1
+texture = ExtResource("3_ynf5e")
 
 [node name="Fish Storage" type="Node3D" parent="."]
 
@@ -34,26 +495,213 @@ slow_chance = 400
 med_chance = 250
 fast_chance = 600
 
-[node name="Fisher" type="Node3D" parent="." node_paths=PackedStringArray("fish_list")]
+[node name="Fisher" type="Node3D" parent="." node_paths=PackedStringArray("animator", "rod_animator", "fish_list")]
 script = ExtResource("1_jjgbg")
+animator = NodePath("MainAnimator")
+rod_animator = NodePath("RodAnimator")
 progress_fast = 5
 target = 1000
+max_wait = 512
 grace_period = 2
 fish_list = [NodePath("../Fish Storage/Salmon")]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Fisher"]
-root_node = NodePath("../Sprite3D")
+[node name="MainAnimator" type="AnimationPlayer" parent="Fisher"]
+root_node = NodePath("../BOBBER PIVOT/bobber")
+libraries = {
+&"": SubResource("AnimationLibrary_fdnlq")
+}
+
+[node name="RodAnimator" type="AnimationPlayer" parent="Fisher"]
+libraries = {
+&"": SubResource("AnimationLibrary_fevyy")
+}
 
 [node name="Camera3D" type="Camera3D" parent="Fisher"]
+transform = Transform3D(-0.766044, -0.111619, 0.633022, 0, 0.984808, 0.173648, -0.642788, 0.133022, -0.754407, 0, 0, 0)
+current = true
 
-[node name="Sprite3D" type="Sprite3D" parent="Fisher"]
-transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.0568018, -0.216959, -1.53512)
+[node name="ground3" type="MeshInstance3D" parent="Fisher/Camera3D"]
+transform = Transform3D(-4.92404, -0.0301537, 0.17101, 0.150769, 0.940151, 0.339422, -0.855051, 0.339422, -0.924958, -9.53674e-07, 1.45963, -28.1586)
+mesh = SubResource("ArrayMesh_r3q5h")
+skeleton = NodePath("")
+
+[node name="ground2" type="MeshInstance3D" parent="Fisher/Camera3D"]
+transform = Transform3D(2.95442, 1.7431e-09, -0.173648, -0.0904611, 0.984808, -0.17101, 0.51303, 0.173648, 0.969846, -1.481, -3.94694, 2.5036)
+mesh = SubResource("ArrayMesh_wsu2k")
+skeleton = NodePath("")
+
+[node name="water" type="MeshInstance3D" parent="Fisher/Camera3D"]
+transform = Transform3D(10, 4.76837e-07, 2.72663e-08, -5.96046e-08, 1.73648, 9.84808, 0, -9.84808, 1.73648, 0, -2.23953, -12.58)
+mesh = SubResource("QuadMesh_6iyac")
+skeleton = NodePath("../../../WorldEnvironment")
+
+[node name="tree 2" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, -3.98445, 4.73999, -26.0152)
+billboard = 1
+texture = ExtResource("6_d1ilt")
+
+[node name="tree 4" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -18.4651, 7.177, -31.4525)
+billboard = 1
+texture = ExtResource("6_d1ilt")
+
+[node name="tree 5" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, -13.3842, 6.34713, -32.5609)
+billboard = 1
+texture = ExtResource("7_6iyac")
+
+[node name="tree 6" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.76301, 7.92163, -32.0952)
+billboard = 1
+texture = ExtResource("8_fdnlq")
+
+[node name="tree 7" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 6.29043, 7.67742, -32.6368)
+billboard = 1
+texture = ExtResource("6_d1ilt")
+
+[node name="tree 8" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 7.27831, 6.4188, -27.5846)
+billboard = 1
+texture = ExtResource("7_6iyac")
+
+[node name="tree 9" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 8.06222, 3.47945, -21.1707)
+billboard = 1
+texture = ExtResource("8_fdnlq")
+
+[node name="tree 10" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 13.2907, 6.41955, -26.4772)
+billboard = 1
+texture = ExtResource("6_d1ilt")
+
+[node name="tree 11" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.5294, 5.98872, -27.3778)
+billboard = 1
+texture = ExtResource("7_6iyac")
+
+[node name="tree 12" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 13.3063, 4.87917, -22.8772)
+billboard = 1
+texture = ExtResource("8_fdnlq")
+
+[node name="tree 13" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, -0.0443592, 5.63317, -27.7199)
+billboard = 1
+texture = ExtResource("6_d1ilt")
+
+[node name="tree 14" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(1, 7.45058e-09, 0, 0, 1, 0, -2.98023e-08, 7.45058e-09, 1, 3.96045, 6.68046, -25.6698)
+billboard = 1
+texture = ExtResource("7_6iyac")
+
+[node name="tree 15" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -24.0498, 6.86735, -31.5147)
+billboard = 1
+texture = ExtResource("8_fdnlq")
+
+[node name="tree 17" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -30.5434, 7.54472, -33.7775)
+billboard = 1
+texture = ExtResource("7_6iyac")
+
+[node name="tree 19" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -10.9629, 8.40814, -33.7988)
+billboard = 1
+texture = ExtResource("6_d1ilt")
+
+[node name="tree 21" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -9.2077, 5.12769, -25.7643)
+billboard = 1
+texture = ExtResource("8_fdnlq")
+
+[node name="tree 23" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -26.9224, 8.19634, -31.1164)
+billboard = 1
+texture = ExtResource("7_6iyac")
+
+[node name="tree 24" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -23.8311, 7.03267, -32.8702)
+billboard = 1
+texture = ExtResource("8_fdnlq")
+
+[node name="tree 26" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 22.1192, 6.6016, -26.5773)
+billboard = 1
+texture = ExtResource("7_6iyac")
+
+[node name="tree 27" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 24.878, 6.70747, -29.5352)
+billboard = 1
+texture = ExtResource("8_fdnlq")
+
+[node name="tree 28" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 2.01408, 7.09776, -29.4315)
+billboard = 1
+texture = ExtResource("6_d1ilt")
+
+[node name="tree 32" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.800001, 0, 0, 0, 0.8, 21.5678, 5.11736, -22.3977)
+billboard = 1
+texture = ExtResource("7_6iyac")
+
+[node name="tree 35" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 10.0195, 5.72648, -27.2614)
+billboard = 1
+texture = ExtResource("7_6iyac")
+
+[node name="tree 38" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 24.4396, 6.8712, -23.6012)
+billboard = 1
+texture = ExtResource("7_6iyac")
+
+[node name="tree 40" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, -20.962, 5.60817, -31.2254)
+billboard = 1
+texture = ExtResource("6_d1ilt")
+
+[node name="tree 41" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 16.3369, 5.26603, -23.6488)
+billboard = 1
+texture = ExtResource("7_6iyac")
+
+[node name="tree 45" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 18.0369, 7.95058, -24.6214)
+billboard = 1
+texture = ExtResource("8_fdnlq")
+
+[node name="tree 46" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -13.0481, 8.00584, -27.8643)
+billboard = 1
+texture = ExtResource("6_d1ilt")
+
+[node name="tree 47" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, -6.45454, 6.02023, -29.5123)
+billboard = 1
+texture = ExtResource("7_6iyac")
+
+[node name="tree 48" type="Sprite3D" parent="Fisher/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -3.35194, 7.06145, -30.8302)
+billboard = 1
+texture = ExtResource("8_fdnlq")
+
+[node name="Splash!" type="Sprite3D" parent="Fisher"]
+transform = Transform3D(0.25, 2.32831e-09, -1.86265e-08, -2.32831e-09, 0.25, -3.46945e-16, 1.86265e-08, 5.20417e-16, 0.25, 0, 0, 0)
+billboard = 1
+texture = ExtResource("12_6iyac")
+
+[node name="BOBBER PIVOT" type="Node3D" parent="Fisher"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -5.8, -4.3, 8.123)
+
+[node name="bobber" type="Sprite3D" parent="Fisher/BOBBER PIVOT"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80007, -4.2844, 8.12302)
 billboard = 1
 texture = ExtResource("3_8gbba")
 
-[node name="Control" type="Control" parent="Fisher"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("4_jjvhh")
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Fisher/BOBBER PIVOT/bobber"]
+transform = Transform3D(-0.766044, -0.111619, 0.633022, 0, 0.984808, 0.173648, -0.642788, 0.133022, -0.754406, 0, 0, 0)
+emitting = false
+mesh = SubResource("QuadMesh_k12tt")
+direction = Vector3(0, 10, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0

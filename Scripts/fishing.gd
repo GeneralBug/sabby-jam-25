@@ -12,6 +12,9 @@ var tension = 0
 var timer = 0
 var random
 
+@export var animator: AnimationPlayer
+@export var rod_animator: AnimationPlayer
+
 @export var progress_slow = 10
 @export var progress_med = 5
 @export var progress_fast = 1
@@ -43,14 +46,11 @@ func _process(delta: float) -> void:
 		TO_CAST:
 			print("waiting to cast!")
 			#wait for cast, then change state to WAITING and start timer
-			if Input.is_action_just_pressed("action_left") or Input.is_action_just_pressed("action_right"):
-				if Input.is_action_just_pressed("action_left"):
-					next_key = "action_right"
-					last_key = "action_left"
-				if Input.is_action_just_pressed("action_right"):
-					next_key = "action_left"
-					last_key = "action_right"
+			if Input.is_action_just_pressed("cast"):
+				next_key = "action_left"
+				last_key = "action_right"
 				print("casting!")
+				animator.play("casting")
 				var passed = false
 				while !passed:
 					current_fish = fish_list[randi() % fish_list.size()]
@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 						passed = true
 				#TODO: PLAY CASTING ANIMATION
 				print("picked " + current_fish.pretty_name + ", waiting...")
-				timer = randi() % max_wait
+				timer = (randi() % max_wait) + 128
 				state = WAITING
 			return
 		WAITING:
@@ -94,17 +94,20 @@ func _process(delta: float) -> void:
 			elif randi() % current_fish.slow_chance <= 1 and fish_state != SLOW:
 				fish_state = SLOW
 				print("fish changing to slow")
-				
+			rod_animator.play("rod_bob")
 			match fish_state:
 				SLOW:
+					animator.play("slow_bobber")
 					if reeling:
 						progress += progress_slow
 						tension += tension_slow
 				MEDIUM:
+					animator.play("med_bobber")
 					if reeling:
 						progress += progress_med
 						tension += tension_med
 				FAST:
+					animator.play("fast_bobber")
 					if reeling:
 						progress += progress_fast
 						tension += tension_fast
@@ -119,11 +122,15 @@ func _process(delta: float) -> void:
 			return
 		CAUGHT:
 			#display fish cutscene
+			rod_animator.stop()
+			animator.play("pull")
 			print("you caught a " + current_fish.pretty_name)	
 			state = RESET
 			return
 		MISSED:
 			#display missed cutscene
+			rod_animator.stop()
+			animator.play("pull")
 			print("you missed a " + current_fish.pretty_name)
 			state = RESET
 			return

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://iuvmumy42iky"
-path.s3tc="res://.godot/imported/water.png-ff4bfd26583990a39ae3de81beb7ef46.s3tc.ctex"
+uid="uid://dm0wwfdeop4j5"
+path.s3tc="res://.godot/imported/rod.png-387c02d381f579847a85b0b55cd134e2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/water.png"
-dest_files=["res://.godot/imported/water.png-ff4bfd26583990a39ae3de81beb7ef46.s3tc.ctex"]
+source_file="res://Textures/rod.png"
+dest_files=["res://.godot/imported/rod.png-387c02d381f579847a85b0b55cd134e2.s3tc.ctex"]
 
 [params]
 
