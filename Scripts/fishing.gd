@@ -1,6 +1,6 @@
 extends Node3D
 
-enum {TO_CAST, WAITING, HOOKED, CAUGHT, MISSED, RESET}
+enum {TO_CAST, WAITING, HOOKED, CAUGHT, MISSED, AWAITING, RESET}
 var state = RESET
 enum {SLOW, MEDIUM, FAST}
 var fish_state = MEDIUM
@@ -14,6 +14,8 @@ var random
 
 @export var animator: AnimationPlayer
 @export var rod_animator: AnimationPlayer
+@export var hud_animator: AnimationPlayer
+@export var fish_animator: AnimationPlayer
 
 @export var progress_slow = 10
 @export var progress_med = 5
@@ -36,10 +38,15 @@ var next_key
 var last_key
 var pivot
 
+@export var fish_ui_picture: TextureRect
+@export var fish_ui_label: RichTextLabel
+
+var done_fisheye = false
 
 func _ready() -> void:
 	random = RandomNumberGenerator.new()
 	random.randomize()
+	fish_animator.play("fish shmovement")
 
 func _process(delta: float) -> void:
 	match state:
@@ -124,8 +131,14 @@ func _process(delta: float) -> void:
 			#display fish cutscene
 			rod_animator.stop()
 			animator.play("pull")
+			
+			fish_ui_picture.texture = current_fish.picture
+			fish_ui_label.text = current_fish.pretty_name
+			hud_animator.play("scroll down")
+			
+			
 			print("you caught a " + current_fish.pretty_name)	
-			state = RESET
+			state = AWAITING
 			return
 		MISSED:
 			#display missed cutscene
@@ -133,6 +146,15 @@ func _process(delta: float) -> void:
 			animator.play("pull")
 			print("you missed a " + current_fish.pretty_name)
 			state = RESET
+			return
+		AWAITING:
+			if Input.is_action_just_pressed("cast") && !done_fisheye:
+				#TODO: fisheye
+				done_fisheye = true
+			elif Input.is_action_just_pressed("cast") && done_fisheye:
+				#TODO: undo fisheye
+				hud_animator.play("scroll up")
+				state = RESET
 			return
 		RESET:
 			#reset all the stuff

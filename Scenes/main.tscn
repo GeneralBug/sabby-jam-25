@@ -1,17 +1,24 @@
-[gd_scene load_steps=34 format=4 uid="uid://ymroewrsa86p"]
+[gd_scene load_steps=45 format=4 uid="uid://ymroewrsa86p"]
 
 [ext_resource type="Material" uid="uid://dpyoo4cd0q57h" path="res://Shaders/water-material-1.tres" id="1_21xkr"]
 [ext_resource type="PackedScene" uid="uid://djhmm2ddoh7cl" path="res://Scenes/Fish/salmon.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://cf7sq0ivlxfrj" path="res://Scripts/fishing.gd" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://dm0wwfdeop4j5" path="res://Textures/rod.png" id="2_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://bf5shuajy32ql" path="res://Textures/bobber.png" id="3_8gbba"]
+[ext_resource type="Texture2D" uid="uid://ctcjj5kj8fpio" path="res://Textures/Fish/anabas.png" id="3_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://buw6mw10b6yvt" path="res://Textures/sun.png" id="3_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://b3qx2hkug1xwq" path="res://Textures/grass.png" id="4_hptm8"]
 [ext_resource type="Script" uid="uid://c4te7xe8krymx" path="res://Scenes/ui controller.gd" id="4_jjvhh"]
+[ext_resource type="FontFile" uid="uid://cy08cn7hk2ks" path="res://Fonts/IHATCS__.TTF" id="4_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://ifc6hb67u8bq" path="res://Textures/tree 2.png" id="6_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://c7ltwg2071171" path="res://Textures/tree 1.png" id="7_6iyac"]
+[ext_resource type="Texture2D" uid="uid://bbqy14vg1fwq5" path="res://Textures/Fish/salmon.png" id="7_wsu2k"]
 [ext_resource type="Texture2D" uid="uid://cu4u87owmmtt6" path="res://Textures/tree 3.png" id="8_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://cmbol5aiwlbma" path="res://Textures/splash.png" id="12_6iyac"]
+
+[sub_resource type="Theme" id="Theme_fdnlq"]
+default_font = ExtResource("4_jkdf5")
+default_font_size = 32
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hptm8"]
 
@@ -23,6 +30,58 @@ background_mode = 1
 background_color = Color(0.117647, 0.521569, 0.729412, 1)
 sky = SubResource("Sky_8gbba")
 tonemap_mode = 2
+
+[sub_resource type="Animation" id="Animation_pdsj5"]
+resource_name = "scroll down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../CanvasLayer/Hud:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -360), Vector2(0, 25), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ee4r6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../CanvasLayer/Hud:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -360)]
+}
+
+[sub_resource type="Animation" id="Animation_gt3je"]
+resource_name = "scroll up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../CanvasLayer/Hud:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 25), Vector2(0, -360)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3pmx8"]
+_data = {
+&"RESET": SubResource("Animation_ee4r6"),
+&"scroll down": SubResource("Animation_pdsj5"),
+&"scroll up": SubResource("Animation_gt3je")
+}
 
 [sub_resource type="Animation" id="Animation_d1ilt"]
 resource_name = "casting"
@@ -334,6 +393,44 @@ _data = {
 &"slow_bobber": SubResource("Animation_fdnlq")
 }
 
+[sub_resource type="Animation" id="Animation_fevyy"]
+resource_name = "fish shmovement"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/Hud/fish texture:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.261799, 0.261799]
+}
+
+[sub_resource type="Animation" id="Animation_hibaj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/Hud/fish texture:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdsj5"]
+_data = {
+&"RESET": SubResource("Animation_hibaj"),
+&"fish shmovement": SubResource("Animation_fevyy")
+}
+
 [sub_resource type="Animation" id="Animation_h1bgf"]
 resource_name = "rod_bob"
 loop_mode = 1
@@ -474,6 +571,51 @@ grow_vertical = 2
 pivot_offset = Vector2(143, 400)
 texture = ExtResource("2_d1ilt")
 
+[node name="Hud" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -360.0
+offset_bottom = -360.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="fish texture" type="TextureRect" parent="CanvasLayer/Hud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -96.0
+offset_right = 128.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(128, 128)
+texture = ExtResource("3_fdnlq")
+expand_mode = 2
+
+[node name="fish name" type="RichTextLabel" parent="CanvasLayer/Hud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -96.0
+offset_right = 128.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(128, 128)
+theme = SubResource("Theme_fdnlq")
+text = "Fish Name!"
+horizontal_alignment = 1
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jjvhh")
 
@@ -482,7 +624,7 @@ transform = Transform3D(0.999048, 0.0107739, -0.0422679, 0, 0.969016, 0.246999, 
 shadow_enabled = true
 sky_mode = 1
 
-[node name="sun _)" type="Sprite3D" parent="DirectionalLight3D"]
+[node name="sun" type="Sprite3D" parent="DirectionalLight3D"]
 transform = Transform3D(0.8, 3.55271e-16, 2.38419e-08, 0, 0.8, -1.19209e-08, -2.38419e-08, 1.19209e-08, 0.8, -0.5, 0.8, 20.065)
 billboard = 1
 texture = ExtResource("3_ynf5e")
@@ -491,24 +633,40 @@ texture = ExtResource("3_ynf5e")
 
 [node name="Salmon" parent="Fish Storage" instance=ExtResource("1_bo1nx")]
 visible = false
+picture = ExtResource("7_wsu2k")
 slow_chance = 400
 med_chance = 250
 fast_chance = 600
 
-[node name="Fisher" type="Node3D" parent="." node_paths=PackedStringArray("animator", "rod_animator", "fish_list")]
+[node name="Fisher" type="Node3D" parent="." node_paths=PackedStringArray("animator", "rod_animator", "hud_animator", "fish_animator", "fish_list", "fish_ui_picture", "fish_ui_label")]
 script = ExtResource("1_jjgbg")
 animator = NodePath("MainAnimator")
 rod_animator = NodePath("RodAnimator")
+hud_animator = NodePath("HudAnimator")
+fish_animator = NodePath("FishAnimator")
 progress_fast = 5
 target = 1000
 max_wait = 512
 grace_period = 2
 fish_list = [NodePath("../Fish Storage/Salmon")]
+fish_ui_picture = NodePath("../CanvasLayer/Hud/fish texture")
+fish_ui_label = NodePath("../CanvasLayer/Hud/fish name")
+
+[node name="HudAnimator" type="AnimationPlayer" parent="Fisher"]
+root_node = NodePath("../MainAnimator")
+libraries = {
+&"": SubResource("AnimationLibrary_3pmx8")
+}
 
 [node name="MainAnimator" type="AnimationPlayer" parent="Fisher"]
 root_node = NodePath("../BOBBER PIVOT/bobber")
 libraries = {
 &"": SubResource("AnimationLibrary_fdnlq")
+}
+
+[node name="FishAnimator" type="AnimationPlayer" parent="Fisher"]
+libraries = {
+&"": SubResource("AnimationLibrary_pdsj5")
 }
 
 [node name="RodAnimator" type="AnimationPlayer" parent="Fisher"]
@@ -684,11 +842,6 @@ texture = ExtResource("7_6iyac")
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -3.35194, 7.06145, -30.8302)
 billboard = 1
 texture = ExtResource("8_fdnlq")
-
-[node name="Splash!" type="Sprite3D" parent="Fisher"]
-transform = Transform3D(0.25, 2.32831e-09, -1.86265e-08, -2.32831e-09, 0.25, -3.46945e-16, 1.86265e-08, 5.20417e-16, 0.25, 0, 0, 0)
-billboard = 1
-texture = ExtResource("12_6iyac")
 
 [node name="BOBBER PIVOT" type="Node3D" parent="Fisher"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -5.8, -4.3, 8.123)
