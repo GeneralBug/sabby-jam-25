@@ -10,7 +10,9 @@ config_version=5
 
 [application]
 
-config/name="Sabby Jam 25"
+config/name="All-Seaing Fisheye"
+config/description="Sabby Jam 2025"
+config/version="1"
 run/main_scene="uid://ymroewrsa86p"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"

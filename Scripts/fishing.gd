@@ -66,7 +66,7 @@ func _ready() -> void:
 	bar_progress.max_value = target
 	bar_tension.max_value = target
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("fullscreen"):
 		var mode := DisplayServer.window_get_mode()
 		var is_window: bool = mode != DisplayServer.WINDOW_MODE_FULLSCREEN
@@ -154,6 +154,9 @@ func _process(delta: float) -> void:
 			if !reeling:
 				progress -= 1
 				tension -= 2
+				
+				if tension < 0:
+					tension = 0
 			
 			if progress >= target:
 				state = CAUGHT
