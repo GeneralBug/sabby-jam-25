@@ -1,7 +1,6 @@
-[gd_scene load_steps=45 format=4 uid="uid://ymroewrsa86p"]
+[gd_scene load_steps=77 format=4 uid="uid://ymroewrsa86p"]
 
 [ext_resource type="Material" uid="uid://dpyoo4cd0q57h" path="res://Shaders/water-material-1.tres" id="1_21xkr"]
-[ext_resource type="PackedScene" uid="uid://djhmm2ddoh7cl" path="res://Scenes/Fish/salmon.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://cf7sq0ivlxfrj" path="res://Scripts/fishing.gd" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://dm0wwfdeop4j5" path="res://Textures/rod.png" id="2_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://bf5shuajy32ql" path="res://Textures/bobber.png" id="3_8gbba"]
@@ -10,15 +9,53 @@
 [ext_resource type="Texture2D" uid="uid://b3qx2hkug1xwq" path="res://Textures/grass.png" id="4_hptm8"]
 [ext_resource type="Script" uid="uid://c4te7xe8krymx" path="res://Scenes/ui controller.gd" id="4_jjvhh"]
 [ext_resource type="FontFile" uid="uid://cy08cn7hk2ks" path="res://Fonts/IHATCS__.TTF" id="4_jkdf5"]
+[ext_resource type="Texture2D" uid="uid://c0sw8biybolpf" path="res://Textures/bar_empty.png" id="5_b3802"]
 [ext_resource type="Texture2D" uid="uid://ifc6hb67u8bq" path="res://Textures/tree 2.png" id="6_d1ilt"]
+[ext_resource type="Texture2D" uid="uid://decpg8d6dflhd" path="res://Textures/bar_full.png" id="6_fevyy"]
 [ext_resource type="Texture2D" uid="uid://c7ltwg2071171" path="res://Textures/tree 1.png" id="7_6iyac"]
+[ext_resource type="Shader" uid="uid://cwxj88p3qppm3" path="res://Shaders/cr_fish_eye.gdshader" id="7_fevyy"]
 [ext_resource type="Texture2D" uid="uid://bbqy14vg1fwq5" path="res://Textures/Fish/salmon.png" id="7_wsu2k"]
 [ext_resource type="Texture2D" uid="uid://cu4u87owmmtt6" path="res://Textures/tree 3.png" id="8_fdnlq"]
+[ext_resource type="Texture2D" uid="uid://dpufypp5jgx8v" path="res://Textures/thought bubble.png" id="8_hibaj"]
+[ext_resource type="Texture2D" uid="uid://d1pwr40x2tp6a" path="res://Textures/missed.png" id="9_k12tt"]
+[ext_resource type="Script" uid="uid://jg5viyx3igji" path="res://Scripts/fish.gd" id="10_pdsj5"]
+[ext_resource type="Texture2D" uid="uid://ds1dxytxxs1o5" path="res://Textures/Fish/boot fish.png" id="11_ee4r6"]
 [ext_resource type="Texture2D" uid="uid://cmbol5aiwlbma" path="res://Textures/splash.png" id="12_6iyac"]
+[ext_resource type="Texture2D" uid="uid://ovijp3n7o6e5" path="res://Textures/Fish/carp.png" id="13_gt3je"]
+[ext_resource type="Texture2D" uid="uid://bmvderpjqtje" path="res://Textures/Fish/cat fish.png" id="14_3pmx8"]
+[ext_resource type="Texture2D" uid="uid://cn3muf1c4is7r" path="res://Textures/Fish/catfish.png" id="15_e08e2"]
+[ext_resource type="Texture2D" uid="uid://v637mch2my2k" path="res://Textures/Fish/eel.png" id="16_neg2b"]
+[ext_resource type="Texture2D" uid="uid://s12ypw2i5rm5" path="res://Textures/Fish/ghost fish.png" id="17_r33sp"]
+[ext_resource type="Texture2D" uid="uid://do3ciomhgempl" path="res://Textures/Fish/goby.png" id="18_hdf80"]
+[ext_resource type="Texture2D" uid="uid://bmvd4y8f38o82" path="res://Textures/Fish/goldfish.png" id="19_jwpg7"]
+[ext_resource type="Texture2D" uid="uid://dfid2hg4tgtsm" path="res://Textures/Fish/guppy.png" id="20_k2e45"]
+[ext_resource type="Texture2D" uid="uid://bgv3ibxj8h8fd" path="res://Textures/Fish/jelly  blubber.png" id="21_536cc"]
+[ext_resource type="Texture2D" uid="uid://coe5kybmllttu" path="res://Textures/Fish/large mouth bass.png" id="22_aqgau"]
+[ext_resource type="Texture2D" uid="uid://buqsosv0cxfmd" path="res://Textures/Fish/neon tetra.png" id="23_8cuat"]
+[ext_resource type="Texture2D" uid="uid://dmfuuklq0f2qi" path="res://Textures/Fish/pufferfish.png" id="24_o1aky"]
+[ext_resource type="Texture2D" uid="uid://dtqtoxh4ilb2y" path="res://Textures/Fish/red drum.png" id="25_o1aky"]
+[ext_resource type="Texture2D" uid="uid://ceous7vlejhmi" path="res://Textures/Fish/sea bass.png" id="26_kwxat"]
+[ext_resource type="Texture2D" uid="uid://bqvtic3ksl1sv" path="res://Textures/Fish/snapper.png" id="27_aa8k8"]
+[ext_resource type="Texture2D" uid="uid://dtugt88rw1sl4" path="res://Textures/Fish/star fish.png" id="28_kqrg6"]
+[ext_resource type="Texture2D" uid="uid://xhweemlafo1o" path="res://Textures/Fish/tuna.png" id="29_nwwfm"]
+[ext_resource type="Texture2D" uid="uid://c18drhj1c7sqb" path="res://Textures/Fish/zebra fish.png" id="30_s8vy0"]
+[ext_resource type="Texture2D" uid="uid://ce6rqxhdtqfc7" path="res://Textures/Fish/zebrafish.png" id="31_jut3y"]
+[ext_resource type="Texture2D" uid="uid://crn25utgxx2r6" path="res://Textures/Fish/teledog.png" id="32_v2nl5"]
+[ext_resource type="Texture2D" uid="uid://wwpyte0npqbq" path="res://Textures/Fish/sunfish.png" id="33_dmskm"]
 
 [sub_resource type="Theme" id="Theme_fdnlq"]
 default_font = ExtResource("4_jkdf5")
 default_font_size = 32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ee4r6"]
+shader = ExtResource("7_fevyy")
+shader_parameter/distortion_strength = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_gt3je"]
+
+[sub_resource type="Theme" id="Theme_pdsj5"]
+default_font = ExtResource("4_jkdf5")
+default_font_size = 24
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hptm8"]
 
@@ -30,21 +67,6 @@ background_mode = 1
 background_color = Color(0.117647, 0.521569, 0.729412, 1)
 sky = SubResource("Sky_8gbba")
 tonemap_mode = 2
-
-[sub_resource type="Animation" id="Animation_pdsj5"]
-resource_name = "scroll down"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../CanvasLayer/Hud:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.4, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -360), Vector2(0, 25), Vector2(0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_ee4r6"]
 length = 0.001
@@ -59,6 +81,45 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../CanvasLayer/lens:material:shader_parameter/distortion_strength")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../CanvasLayer/thought bubble:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pdsj5"]
+resource_name = "scroll down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../CanvasLayer/Hud:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -360), Vector2(0, 25), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_gt3je"]
@@ -76,51 +137,68 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, 25), Vector2(0, -360)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3pmx8"]
-_data = {
-&"RESET": SubResource("Animation_ee4r6"),
-&"scroll down": SubResource("Animation_pdsj5"),
-&"scroll up": SubResource("Animation_gt3je")
-}
-
-[sub_resource type="Animation" id="Animation_d1ilt"]
-resource_name = "casting"
-length = 2.0
+[sub_resource type="Animation" id="Animation_3pmx8"]
+resource_name = "fisheye_enable"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../../CanvasLayer/rod:rotation")
+tracks/0/path = NodePath("../../CanvasLayer/lens:material:shader_parameter/distortion_strength")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.51, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, -0.523599, 0.523599, 0.261799, 0.0]
+"values": [0.0, 2.25, 1.9, 2.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath("../../CanvasLayer/thought bubble:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.75, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u50mg"]
+resource_name = "fisheye_disable"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../CanvasLayer/thought bubble:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../CanvasLayer/lens:material:shader_parameter/distortion_strength")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.16667, 1.5, 1.6, 1.7, 1.8, 1.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(80, 80, -10), Vector3(23.1326, 67.3699, 14.8748), Vector3(0, -2, 0), Vector3(0, 1, 0), Vector3(0, -1, 0), Vector3(0, 1, 0), Vector3(0, 0, 0)]
+"values": [2.0, 0.0]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CPUParticles3D:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3pmx8"]
+_data = {
+&"RESET": SubResource("Animation_ee4r6"),
+&"fisheye_disable": SubResource("Animation_u50mg"),
+&"fisheye_enable": SubResource("Animation_3pmx8"),
+&"scroll down": SubResource("Animation_pdsj5"),
+&"scroll up": SubResource("Animation_gt3je")
 }
 
 [sub_resource type="Animation" id="Animation_6iyac"]
@@ -186,57 +264,44 @@ tracks/4/keys = {
 "values": [50.0]
 }
 
-[sub_resource type="Animation" id="Animation_fdnlq"]
-resource_name = "slow_bobber"
+[sub_resource type="Animation" id="Animation_d1ilt"]
+resource_name = "casting"
 length = 2.0
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("../../../CanvasLayer/rod:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.51, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(2, 0, 2), Vector3(0, 0, 0), Vector3(-2, 0, -2)]
+"values": [0.0, -0.523599, 0.523599, 0.261799, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CPUParticles3D:emitting")
-tracks/1/interp = 1
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"times": PackedFloat32Array(0, 1.16667, 1.5, 1.6, 1.7, 1.8, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(80, 80, -10), Vector3(23.1326, 67.3699, 14.8748), Vector3(0, -2, 0), Vector3(0, 1, 0), Vector3(0, -1, 0), Vector3(0, 1, 0), Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CPUParticles3D:initial_velocity_min")
+tracks/2/path = NodePath("CPUParticles3D:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [20.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CPUParticles3D:initial_velocity_max")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [25.0]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_jkdf5"]
@@ -383,6 +448,59 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_fdnlq"]
+resource_name = "slow_bobber"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2, 0, 2), Vector3(0, 0, 0), Vector3(-2, 0, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles3D:initial_velocity_min")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [20.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CPUParticles3D:initial_velocity_max")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [25.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fdnlq"]
 _data = {
 &"RESET": SubResource("Animation_6iyac"),
@@ -391,6 +509,21 @@ _data = {
 &"med_bobber": SubResource("Animation_wsu2k"),
 &"pull": SubResource("Animation_k12tt"),
 &"slow_bobber": SubResource("Animation_fdnlq")
+}
+
+[sub_resource type="Animation" id="Animation_hibaj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/Hud/fish texture:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_fevyy"]
@@ -410,12 +543,18 @@ tracks/0/keys = {
 "values": [-0.261799, 0.261799]
 }
 
-[sub_resource type="Animation" id="Animation_hibaj"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdsj5"]
+_data = {
+&"RESET": SubResource("Animation_hibaj"),
+&"fish shmovement": SubResource("Animation_fevyy")
+}
+
+[sub_resource type="Animation" id="Animation_b3802"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../CanvasLayer/Hud/fish texture:rotation")
+tracks/0/path = NodePath("../CanvasLayer/rod:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -423,12 +562,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdsj5"]
-_data = {
-&"RESET": SubResource("Animation_hibaj"),
-&"fish shmovement": SubResource("Animation_fevyy")
 }
 
 [sub_resource type="Animation" id="Animation_h1bgf"]
@@ -445,21 +578,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.0872665]
-}
-
-[sub_resource type="Animation" id="Animation_b3802"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../CanvasLayer/rod:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fevyy"]
@@ -561,7 +679,6 @@ grow_vertical = 2
 script = ExtResource("4_jjvhh")
 
 [node name="rod" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = -1
 offset_left = -143.0
 offset_top = -40.0
 offset_right = 369.0
@@ -616,6 +733,71 @@ theme = SubResource("Theme_fdnlq")
 text = "Fish Name!"
 horizontal_alignment = 1
 
+[node name="lens" type="MeshInstance2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_ee4r6")
+position = Vector2(240, 180)
+scale = Vector2(300, 300)
+mesh = SubResource("SphereMesh_gt3je")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 376.0
+offset_top = 25.0
+offset_right = 408.0
+offset_bottom = 693.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+alignment = 1
+
+[node name="progress bar" type="TextureProgressBar" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+fill_mode = 3
+texture_under = ExtResource("5_b3802")
+texture_progress = ExtResource("6_fevyy")
+tint_progress = Color(0, 1, 0, 1)
+
+[node name="tension bar" type="TextureProgressBar" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+fill_mode = 3
+texture_under = ExtResource("5_b3802")
+texture_progress = ExtResource("6_fevyy")
+tint_progress = Color(1, 0, 0, 1)
+
+[node name="thought bubble" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 10.0
+offset_right = 200.0
+offset_bottom = 210.0
+grow_horizontal = 2
+pivot_offset = Vector2(200, 100)
+texture = ExtResource("8_hibaj")
+expand_mode = 3
+
+[node name="thought bubble text" type="RichTextLabel" parent="CanvasLayer/thought bubble"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_pdsj5")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "I think I might be"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jjvhh")
 
@@ -631,26 +813,269 @@ texture = ExtResource("3_ynf5e")
 
 [node name="Fish Storage" type="Node3D" parent="."]
 
-[node name="Salmon" parent="Fish Storage" instance=ExtResource("1_bo1nx")]
-visible = false
-picture = ExtResource("7_wsu2k")
-slow_chance = 400
-med_chance = 250
-fast_chance = 600
+[node name="Bootfish" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Bootfish"
+rarity = 30
+picture = ExtResource("11_ee4r6")
+slow_chance = 1
+med_chance = -1
+fast_chance = -1
+metadata/_custom_type_script = "uid://jg5viyx3igji"
 
-[node name="Fisher" type="Node3D" parent="." node_paths=PackedStringArray("animator", "rod_animator", "hud_animator", "fish_animator", "fish_list", "fish_ui_picture", "fish_ui_label")]
+[node name="Salmon" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Salmon"
+rarity = 5
+picture = ExtResource("7_wsu2k")
+slow_chance = 2000
+med_chance = 1000
+fast_chance = 1500
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Anabas" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Anabas"
+rarity = 5
+picture = ExtResource("3_fdnlq")
+slow_chance = 2000
+med_chance = 2000
+fast_chance = 2000
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Carp" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Carp"
+rarity = 5
+picture = ExtResource("13_gt3je")
+slow_chance = 1000
+med_chance = 3000
+fast_chance = 3000
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Cat Fish" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Catfish"
+rarity = 10
+picture = ExtResource("14_3pmx8")
+slow_chance = -1
+med_chance = 5000
+fast_chance = 2500
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Catfish" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Catfish"
+rarity = 5
+picture = ExtResource("15_e08e2")
+slow_chance = 3000
+med_chance = 2000
+fast_chance = 1500
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Eel" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Eel"
+rarity = 6
+picture = ExtResource("16_neg2b")
+slow_chance = 3000
+med_chance = 3000
+fast_chance = 4000
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Ghostfish" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Ghostfish"
+rarity = 10
+picture = ExtResource("17_r33sp")
+slow_chance = 2000
+med_chance = 2000
+fast_chance = 2000
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Goby" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Goby"
+rarity = 3
+picture = ExtResource("18_hdf80")
+slow_chance = 5000
+med_chance = 3000
+fast_chance = 3000
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Goldfish" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Goldfish"
+rarity = 3
+picture = ExtResource("19_jwpg7")
+slow_chance = 1000
+med_chance = 5000
+fast_chance = 5000
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Gubby" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Guppy"
+rarity = 5
+picture = ExtResource("20_k2e45")
+slow_chance = 3000
+med_chance = 3000
+fast_chance = 4000
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Jelly" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Jelly Blubber"
+rarity = 6
+picture = ExtResource("21_536cc")
+slow_chance = 1000
+med_chance = 4000
+fast_chance = -1
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Large Mouth Bass" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Large Mouth Bass"
+rarity = 4
+picture = ExtResource("22_aqgau")
+slow_chance = 4000
+med_chance = 4000
+fast_chance = 3500
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Neon Tetra" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Neon Tetra"
+rarity = 4
+picture = ExtResource("23_8cuat")
+slow_chance = 2000
+med_chance = 2000
+fast_chance = 2000
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Pufferfish" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Pufferfish"
+rarity = 6
+picture = ExtResource("24_o1aky")
+slow_chance = 5000
+med_chance = 3000
+fast_chance = 3000
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Red Drum" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Red Drum"
+rarity = 5
+picture = ExtResource("25_o1aky")
+slow_chance = 3000
+med_chance = 5000
+fast_chance = 3000
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Sea Bass" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Sea Bass"
+rarity = 1
+picture = ExtResource("26_kwxat")
+slow_chance = 3000
+med_chance = 3000
+fast_chance = 3000
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Snapper" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Snapper"
+rarity = 3
+picture = ExtResource("27_aa8k8")
+slow_chance = 4000
+med_chance = 3000
+fast_chance = 4000
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Starfish" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Starfish"
+rarity = 6
+picture = ExtResource("28_kqrg6")
+slow_chance = 2000
+med_chance = 2000
+fast_chance = -1
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Tuna" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Tuna"
+rarity = 4
+picture = ExtResource("29_nwwfm")
+slow_chance = 6000
+med_chance = 3000
+fast_chance = 3000
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Zebra Fish" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Zebrafish"
+rarity = 10
+picture = ExtResource("30_s8vy0")
+slow_chance = 3000
+med_chance = 1000
+fast_chance = 3000
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Zebrafish" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Zebrafish"
+rarity = 4
+picture = ExtResource("31_jut3y")
+slow_chance = 3000
+med_chance = 1000
+fast_chance = 3000
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Teledog" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Teledog"
+rarity = 10
+picture = ExtResource("32_v2nl5")
+slow_chance = 5000
+med_chance = 3000
+fast_chance = 5000
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Sunfish" type="Node" parent="Fish Storage"]
+script = ExtResource("10_pdsj5")
+pretty_name = "Sunfish"
+rarity = 10
+picture = ExtResource("33_dmskm")
+slow_chance = 10000
+med_chance = 5000
+fast_chance = 5000
+metadata/_custom_type_script = "uid://jg5viyx3igji"
+
+[node name="Fisher" type="Node3D" parent="." node_paths=PackedStringArray("animator", "rod_animator", "hud_animator", "fish_animator", "fish_list", "fish_ui_picture", "fish_ui_label", "bar_progress", "bar_tension", "thought_bubble_text")]
 script = ExtResource("1_jjgbg")
 animator = NodePath("MainAnimator")
 rod_animator = NodePath("RodAnimator")
 hud_animator = NodePath("HudAnimator")
 fish_animator = NodePath("FishAnimator")
-progress_fast = 5
-target = 1000
+progress_med = 10
+progress_fast = 10
+tension_slow = 6
+tension_med = 9
+tension_fast = 18
+target = 2000
 max_wait = 512
 grace_period = 2
-fish_list = [NodePath("../Fish Storage/Salmon")]
+fish_list = [NodePath("../Fish Storage/Bootfish"), NodePath("../Fish Storage/Salmon"), NodePath("../Fish Storage/Anabas"), NodePath("../Fish Storage/Carp"), NodePath("../Fish Storage/Catfish"), NodePath("../Fish Storage/Eel"), NodePath("../Fish Storage/Ghostfish"), NodePath("../Fish Storage/Goby"), NodePath("../Fish Storage/Goldfish"), NodePath("../Fish Storage/Gubby"), NodePath("../Fish Storage/Jelly"), NodePath("../Fish Storage/Large Mouth Bass"), NodePath("../Fish Storage/Neon Tetra"), NodePath("../Fish Storage/Pufferfish"), NodePath("../Fish Storage/Red Drum"), NodePath("../Fish Storage/Sea Bass"), NodePath("../Fish Storage/Snapper"), NodePath("../Fish Storage/Starfish"), NodePath("../Fish Storage/Tuna"), NodePath("../Fish Storage/Zebra Fish"), NodePath("../Fish Storage/Zebrafish"), NodePath("../Fish Storage/Teledog"), NodePath("../Fish Storage/Sunfish"), NodePath("../Fish Storage/Cat Fish")]
 fish_ui_picture = NodePath("../CanvasLayer/Hud/fish texture")
 fish_ui_label = NodePath("../CanvasLayer/Hud/fish name")
+missed_picture = ExtResource("9_k12tt")
+missed_text = "Fish got way..."
+bar_progress = NodePath("../CanvasLayer/VBoxContainer/progress bar")
+bar_tension = NodePath("../CanvasLayer/VBoxContainer/tension bar")
+fish_thoughts = Array[String](["I'm an Arch user.", "Mr. Nice Guy is a 1997 English-language Hong Kong action comedy film directed by Sammo Hung, who also cameos as an unfortunate cyclist. The film stars Jackie Chan and Richard Norton. The film was released theatrically in Hong Kong on 31 January 1997. Mr. Nice Guy features a collaboration between Chan and Norton, reuniting them for the first time since 1993's City Hunter. Set in Melbourne, Victoria, Australia, it is Chan's first film to be scripted and shot in English. ", "$10001 Rapala Pro Fishing.", "Bill Clinton had two bowls.", "I was transformed into a fish but it's fine, I like this more.", "h", "I could really go for some phytoplankton right now.", "Fuck off!", "Oh noes, I'm catched 🥺", "You're just jealous of my awesome coconut farm.", "I'm stuff.", "I love my wife.", "I hate my children.", "I love my children.", "I'm not shiny.", "You just ruined my radar chain.", "It's so hot up here.", "Put me back.", "Blub.", "I'm George Lucas.", "In this economy?", "I'm a hamburger.", "I eat krill.", "Wow! You lose!", "Sorry, no eggs.", "The unending march of time terrifies me.", "I'm afraid of flying.", "My name's Tony.", "I own an illegal firearm.", "Tiny Chef got cancelled...", "Boo.", "I will have my revenge.", "The Evil Gamer stole my games...", "I wish I was a carpenter.", "I have intense knowledge of the tools.", "The audacity of some places, charging more than $5 for a coffee!", "I'm so fucking hungry.", "Please don't eat my children!", "I've never seen Star Wars.", "Joker Tacos.", "Blub.", "Do ghosts enjoy going through walls?", "Do humans have souls?", "Do fish have souls?", "I'm not real.", "Is this a metaphor?", "I'm flying!", "That was pretty tasty.", "I'm sleepy...", "I'm thirsty...", "I'm thirty!", "I'm three!", "I'm seven!", "Trains are basically robots.", "Drat, foiled again!", "Are you an alien? Am I being abducted?", "I'm saving up for bottom surgery.", "I'm saving up for top surgery.", "Nerds before birds.", "Hey cutie ;)", "I'm French.", "Sign up to join Sabby!", "Poopy ass.", "I'm a fish.", "Follow me on Peertube.", "Please remember to Like and Subscribe.", "Are you going to kill me?", "At least it wasn't a shark.", "I need to start HRT...", "Softmodding your Wii U is super easy.", "Have you hacked your 3DS? It's quite easy.", "Ouch.", "My interest rate increased again.", "Alexa, play penis music.", "Do you mind?", "Excuse me, I'm trying to call someone here.", "I'm a Wikipedia contributor.", "I'm an internet archivist.", "Do you know the Angry Video Game Nerd?", "Yummy worm.", "Don't drink the water, we piss in that.", "Don't drink the water, we fuck in that.", "I can't fucking breath.", "Why would you do this to me?", "Hi :3", "Hey :)", "Blub Blub Blub.", "Fuck you.", "*fish noises*", "Blub Blub.", "Blub.", "Nice work!", "Get to Luigi!", "You're a weird looking fish.", "Are you a fish?", "I'm a fish!", "Do drugs.", "Don't do drugs.", "What do fish smoke? Sea weed!", "I'm saving for a new car.", "Lure? I hardly know her!", "Fisher? I hardly know her!", "Have you ever eaten a drippy taco? You don't want to.", "I wish I was still in the water. I can swim there.", "Swimming is fun.", "I like swimming.", "I fucking love swimming.", "I've never eaten blue cheese.", "I hope you're happy.", "Stop reading my mind!", "What are you looking for?", "Pasta Priates is a front.", "Gabe Newell hates fish.", "My favourite dinosaur is the anklyosaurus.", "My favourite dinosaur is that little one with the feathers.", "I love being a fish.", "This is scary.", "If I think, am I is?"])
+thought_bubble_text = NodePath("../CanvasLayer/thought bubble/thought bubble text")
 
 [node name="HudAnimator" type="AnimationPlayer" parent="Fisher"]
 root_node = NodePath("../MainAnimator")

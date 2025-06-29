@@ -21,9 +21,9 @@ var random
 @export var progress_med = 5
 @export var progress_fast = 1
 
-@export var tension_slow = 0
-@export var tension_med = 1
-@export var tension_fast = 5
+@export var tension_slow = 1
+@export var tension_med = 5
+@export var tension_fast = 10
 
 @export var target = 100
 @export var max_wait = 256
@@ -42,13 +42,37 @@ var pivot
 @export var fish_ui_label: RichTextLabel
 
 var done_fisheye = false
+var missed = false
+
+@export var missed_picture: CompressedTexture2D
+@export var missed_text: String
+
+@export var bar_progress: TextureProgressBar
+@export var bar_tension: TextureProgressBar
+
+@export var fish_thoughts: Array[String]
+@export var thought_bubble_text: RichTextLabel
 
 func _ready() -> void:
 	random = RandomNumberGenerator.new()
 	random.randomize()
 	fish_animator.play("fish shmovement")
+	
+	bar_progress.max_value = target
+	bar_tension.max_value = target
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("fullscreen"):
+		var mode := DisplayServer.window_get_mode()
+		var is_window: bool = mode != DisplayServer.WINDOW_MODE_FULLSCREEN
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if is_window else DisplayServer.WINDOW_MODE_WINDOWED)
+	
+	if Input.is_action_pressed("quit_to_desktop"):
+		get_tree().quit()
+	
+	bar_progress.value = float(progress)
+	bar_tension.value = float(tension)
+	
 	match state:
 		TO_CAST:
 			print("waiting to cast!")
@@ -92,15 +116,16 @@ func _process(delta: float) -> void:
 			#THEN, check fish state and change counters accordingly
 			
 			#TODO: this feels fucking nasty, please fix
-			if randi() % current_fish.med_chance <= 1 and fish_state != MEDIUM:
+			if current_fish.med_chance != -1 and randi() % current_fish.med_chance <= 1 and fish_state != MEDIUM:
 				fish_state = MEDIUM
 				print("fish changing to medium")
-			elif randi() % current_fish.fast_chance <= 1 and fish_state != FAST:
-				fish_state = FAST
-				print("fish changing to fast")
-			elif randi() % current_fish.slow_chance <= 1 and fish_state != SLOW:
+			elif current_fish.slow_chance != -1 and randi() % current_fish.slow_chance <= 1 and fish_state != SLOW:
 				fish_state = SLOW
 				print("fish changing to slow")
+			elif current_fish.fast_chance != -1 and randi() % current_fish.fast_chance <= 1 and fish_state != FAST:
+				fish_state = FAST
+				print("fish changing to fast")
+
 			rod_animator.play("rod_bob")
 			match fish_state:
 				SLOW:
@@ -120,7 +145,7 @@ func _process(delta: float) -> void:
 						tension += tension_fast
 			if !reeling:
 				progress -= 1
-				tension -= 1
+				tension -= 2
 			
 			if progress >= target:
 				state = CAUGHT
@@ -136,7 +161,6 @@ func _process(delta: float) -> void:
 			fish_ui_label.text = current_fish.pretty_name
 			hud_animator.play("scroll down")
 			
-			
 			print("you caught a " + current_fish.pretty_name)	
 			state = AWAITING
 			return
@@ -145,15 +169,23 @@ func _process(delta: float) -> void:
 			rod_animator.stop()
 			animator.play("pull")
 			print("you missed a " + current_fish.pretty_name)
-			state = RESET
+			fish_ui_picture.texture = missed_picture
+			fish_ui_label.text = missed_text
+			hud_animator.play("scroll down")
+			missed = true
+			state = AWAITING
 			return
 		AWAITING:
-			if Input.is_action_just_pressed("cast") && !done_fisheye:
-				#TODO: fisheye
+			if Input.is_action_just_pressed("cast") && missed:
+				hud_animator.play("scroll up")
+				state = RESET
+			elif Input.is_action_just_pressed("cast") && !done_fisheye:
+				thought_bubble_text.text = fish_thoughts[randi() % fish_thoughts.size()]
+				hud_animator.play("fisheye_enable")
 				done_fisheye = true
 			elif Input.is_action_just_pressed("cast") && done_fisheye:
-				#TODO: undo fisheye
-				hud_animator.play("scroll up")
+				hud_animator.play("fisheye_disable")
+				hud_animator.queue("scroll up")
 				state = RESET
 			return
 		RESET:
@@ -162,6 +194,7 @@ func _process(delta: float) -> void:
 			fish_state = MEDIUM
 			progress = 0
 			tension = 0
+			missed = false
+			done_fisheye = false
 			state = TO_CAST
 			return
-			
