@@ -107,34 +107,32 @@ tracks/2/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_pdsj5"]
-resource_name = "scroll down"
+[sub_resource type="Animation" id="Animation_u50mg"]
+resource_name = "fisheye_disable"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../CanvasLayer/Hud:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath("../../CanvasLayer/thought bubble:modulate")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.4, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -360), Vector2(0, 25), Vector2(0, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_gt3je"]
-resource_name = "scroll up"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../CanvasLayer/Hud:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../CanvasLayer/lens:material:shader_parameter/distortion_strength")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 25), Vector2(0, -360)]
+"values": [2.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_3pmx8"]
@@ -164,32 +162,34 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_u50mg"]
-resource_name = "fisheye_disable"
-length = 0.5
+[sub_resource type="Animation" id="Animation_pdsj5"]
+resource_name = "scroll down"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../CanvasLayer/thought bubble:modulate")
-tracks/0/interp = 1
+tracks/0/path = NodePath("../../CanvasLayer/Hud:position")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.4, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Vector2(0, -360), Vector2(0, 25), Vector2(0, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../CanvasLayer/lens:material:shader_parameter/distortion_strength")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+
+[sub_resource type="Animation" id="Animation_gt3je"]
+resource_name = "scroll up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../CanvasLayer/Hud:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [2.0, 0.0]
+"values": [Vector2(0, 0), Vector2(0, 25), Vector2(0, -360)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3pmx8"]
@@ -715,6 +715,25 @@ pivot_offset = Vector2(128, 128)
 texture = ExtResource("3_fdnlq")
 expand_mode = 2
 
+[node name="fish size" type="RichTextLabel" parent="CanvasLayer/Hud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -90.0
+offset_right = 128.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(128, 128)
+theme = SubResource("Theme_fdnlq")
+theme_override_font_sizes/normal_font_size = 24
+text = "Fish Size!"
+horizontal_alignment = 1
+
 [node name="fish name" type="RichTextLabel" parent="CanvasLayer/Hud"]
 layout_mode = 1
 anchors_preset = 8
@@ -723,9 +742,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -128.0
-offset_top = -96.0
+offset_top = -120.0
 offset_right = 128.0
-offset_bottom = 160.0
+offset_bottom = 136.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(128, 128)
@@ -1053,7 +1072,7 @@ med_chance = 5000
 fast_chance = 5000
 metadata/_custom_type_script = "uid://jg5viyx3igji"
 
-[node name="Fisher" type="Node3D" parent="." node_paths=PackedStringArray("animator", "rod_animator", "hud_animator", "fish_animator", "fish_list", "fish_ui_picture", "fish_ui_label", "bar_progress", "bar_tension", "thought_bubble_text")]
+[node name="Fisher" type="Node3D" parent="." node_paths=PackedStringArray("animator", "rod_animator", "hud_animator", "fish_animator", "fish_list", "fish_ui_picture", "fish_ui_label", "fish_ui_size", "bar_progress", "bar_tension", "thought_bubble_text", "canvas")]
 script = ExtResource("1_jjgbg")
 animator = NodePath("MainAnimator")
 rod_animator = NodePath("RodAnimator")
@@ -1070,12 +1089,14 @@ grace_period = 2
 fish_list = [NodePath("../Fish Storage/Bootfish"), NodePath("../Fish Storage/Salmon"), NodePath("../Fish Storage/Anabas"), NodePath("../Fish Storage/Carp"), NodePath("../Fish Storage/Catfish"), NodePath("../Fish Storage/Eel"), NodePath("../Fish Storage/Ghostfish"), NodePath("../Fish Storage/Goby"), NodePath("../Fish Storage/Goldfish"), NodePath("../Fish Storage/Gubby"), NodePath("../Fish Storage/Jelly"), NodePath("../Fish Storage/Large Mouth Bass"), NodePath("../Fish Storage/Neon Tetra"), NodePath("../Fish Storage/Pufferfish"), NodePath("../Fish Storage/Red Drum"), NodePath("../Fish Storage/Sea Bass"), NodePath("../Fish Storage/Snapper"), NodePath("../Fish Storage/Starfish"), NodePath("../Fish Storage/Tuna"), NodePath("../Fish Storage/Zebra Fish"), NodePath("../Fish Storage/Zebrafish"), NodePath("../Fish Storage/Teledog"), NodePath("../Fish Storage/Sunfish"), NodePath("../Fish Storage/Cat Fish")]
 fish_ui_picture = NodePath("../CanvasLayer/Hud/fish texture")
 fish_ui_label = NodePath("../CanvasLayer/Hud/fish name")
+fish_ui_size = NodePath("../CanvasLayer/Hud/fish size")
 missed_picture = ExtResource("9_k12tt")
 missed_text = "Fish got way..."
 bar_progress = NodePath("../CanvasLayer/VBoxContainer/progress bar")
 bar_tension = NodePath("../CanvasLayer/VBoxContainer/tension bar")
 fish_thoughts = Array[String](["I'm an Arch user.", "Mr. Nice Guy is a 1997 English-language Hong Kong action comedy film directed by Sammo Hung, who also cameos as an unfortunate cyclist. The film stars Jackie Chan and Richard Norton. The film was released theatrically in Hong Kong on 31 January 1997. Mr. Nice Guy features a collaboration between Chan and Norton, reuniting them for the first time since 1993's City Hunter. Set in Melbourne, Victoria, Australia, it is Chan's first film to be scripted and shot in English. ", "$10001 Rapala Pro Fishing.", "Bill Clinton had two bowls.", "I was transformed into a fish but it's fine, I like this more.", "h", "I could really go for some phytoplankton right now.", "Fuck off!", "Oh noes, I'm catched 🥺", "You're just jealous of my awesome coconut farm.", "I'm stuff.", "I love my wife.", "I hate my children.", "I love my children.", "I'm not shiny.", "You just ruined my radar chain.", "It's so hot up here.", "Put me back.", "Blub.", "I'm George Lucas.", "In this economy?", "I'm a hamburger.", "I eat krill.", "Wow! You lose!", "Sorry, no eggs.", "The unending march of time terrifies me.", "I'm afraid of flying.", "My name's Tony.", "I own an illegal firearm.", "Tiny Chef got cancelled...", "Boo.", "I will have my revenge.", "The Evil Gamer stole my games...", "I wish I was a carpenter.", "I have intense knowledge of the tools.", "The audacity of some places, charging more than $5 for a coffee!", "I'm so fucking hungry.", "Please don't eat my children!", "I've never seen Star Wars.", "Joker Tacos.", "Blub.", "Do ghosts enjoy going through walls?", "Do humans have souls?", "Do fish have souls?", "I'm not real.", "Is this a metaphor?", "I'm flying!", "That was pretty tasty.", "I'm sleepy...", "I'm thirsty...", "I'm thirty!", "I'm three!", "I'm seven!", "Trains are basically robots.", "Drat, foiled again!", "Are you an alien? Am I being abducted?", "I'm saving up for bottom surgery.", "I'm saving up for top surgery.", "Nerds before birds.", "Hey cutie ;)", "I'm French.", "Sign up to join Sabby!", "Poopy ass.", "I'm a fish.", "Follow me on Peertube.", "Please remember to Like and Subscribe.", "Are you going to kill me?", "At least it wasn't a shark.", "I need to start HRT...", "Softmodding your Wii U is super easy.", "Have you hacked your 3DS? It's quite easy.", "Ouch.", "My interest rate increased again.", "Alexa, play penis music.", "Do you mind?", "Excuse me, I'm trying to call someone here.", "I'm a Wikipedia contributor.", "I'm an internet archivist.", "Do you know the Angry Video Game Nerd?", "Yummy worm.", "Don't drink the water, we piss in that.", "Don't drink the water, we fuck in that.", "I can't fucking breath.", "Why would you do this to me?", "Hi :3", "Hey :)", "Blub Blub Blub.", "Fuck you.", "*fish noises*", "Blub Blub.", "Blub.", "Nice work!", "Get to Luigi!", "You're a weird looking fish.", "Are you a fish?", "I'm a fish!", "Do drugs.", "Don't do drugs.", "What do fish smoke? Sea weed!", "I'm saving for a new car.", "Lure? I hardly know her!", "Fisher? I hardly know her!", "Have you ever eaten a drippy taco? You don't want to.", "I wish I was still in the water. I can swim there.", "Swimming is fun.", "I like swimming.", "I fucking love swimming.", "I've never eaten blue cheese.", "I hope you're happy.", "Stop reading my mind!", "What are you looking for?", "Pasta Priates is a front.", "Gabe Newell hates fish.", "My favourite dinosaur is the anklyosaurus.", "My favourite dinosaur is that little one with the feathers.", "I love being a fish.", "This is scary.", "If I think, am I is?"])
 thought_bubble_text = NodePath("../CanvasLayer/thought bubble/thought bubble text")
+canvas = NodePath("../CanvasLayer")
 
 [node name="HudAnimator" type="AnimationPlayer" parent="Fisher"]
 root_node = NodePath("../MainAnimator")

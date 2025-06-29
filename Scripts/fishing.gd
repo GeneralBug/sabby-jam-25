@@ -40,6 +40,7 @@ var pivot
 
 @export var fish_ui_picture: TextureRect
 @export var fish_ui_label: RichTextLabel
+@export var fish_ui_size: RichTextLabel
 
 var done_fisheye = false
 var missed = false
@@ -52,6 +53,10 @@ var missed = false
 
 @export var fish_thoughts: Array[String]
 @export var thought_bubble_text: RichTextLabel
+
+@export var canvas: CanvasLayer
+
+var format_string = "{size} cm"
 
 func _ready() -> void:
 	random = RandomNumberGenerator.new()
@@ -66,6 +71,9 @@ func _process(delta: float) -> void:
 		var mode := DisplayServer.window_get_mode()
 		var is_window: bool = mode != DisplayServer.WINDOW_MODE_FULLSCREEN
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if is_window else DisplayServer.WINDOW_MODE_WINDOWED)
+	
+	if Input.is_action_just_pressed("hide_ui"):
+		canvas.visible = !canvas.visible
 	
 	if Input.is_action_pressed("quit_to_desktop"):
 		get_tree().quit()
@@ -156,9 +164,12 @@ func _process(delta: float) -> void:
 			#display fish cutscene
 			rod_animator.stop()
 			animator.play("pull")
-			
+			var size = randf_range(0.01, 200.0)
 			fish_ui_picture.texture = current_fish.picture
 			fish_ui_label.text = current_fish.pretty_name
+			print(size)
+			fish_ui_size.text = format_string.format({"size":"%0.2f" % size})
+			print(fish_ui_size.text)
 			hud_animator.play("scroll down")
 			
 			print("you caught a " + current_fish.pretty_name)	
@@ -171,6 +182,7 @@ func _process(delta: float) -> void:
 			print("you missed a " + current_fish.pretty_name)
 			fish_ui_picture.texture = missed_picture
 			fish_ui_label.text = missed_text
+			fish_ui_size.text = ""
 			hud_animator.play("scroll down")
 			missed = true
 			state = AWAITING
